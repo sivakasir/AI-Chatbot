@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoriichi Tsugikuni • Sun Breathing</title>
+
+    <style>
+        .bot-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .bot-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: url("../static/yorichi.jpg") center / cover no-repeat;
+            border: 2px solid #b11226;
+            flex-shrink: 0;
+        }
+
+        .message.bot {
+            background: #f5f5f5;
+            color: #111;
+            border-bottom-left-radius: 6px;
+        }
+
+        :root {
+            --sun-red: #b11226;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            background: url("../static/yorichi.jpg") center / cover no-repeat fixed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+            z-index: -1;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: linear-gradient(135deg, #5c000d, var(--sun-red));
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .header img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: white;
+            letter-spacing: 3px;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 12px;
+            color: #ffd6d6;
+            letter-spacing: 1.5px;
+        }
+
+        .clear-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* HERO */
+        .hero {
+            padding: 18px;
+            font-size: 14px;
+            color: #ffdcdc;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        /* TECHNIQUES */
+        .techniques {
+            display: flex;
+            gap: 8px;
+            padding: 12px;
+            overflow-x: auto;
+        }
+
+        .techniques button {
+            background: rgba(177, 18, 38, 0.85);
+            border: none;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 12px;
+        }
+
+        .techniques button:hover {
+            background: #d1152c;
+        }
+
+        /* CHAT */
+        .chat-messages {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .message {
+            width: fit-content;
+            max-width: 75%;
+            padding: 14px 20px;
+            margin-bottom: 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.7;
+            word-wrap: break-word;
+        }
+
+        /* USER */
+        .user {
+            background: var(--sun-red);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 6px;
+        }
+
+        /* BOT */
+        .bot-wrapper {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .bot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: url("../static/yorichi.jpg") center / cover;
+            border: 2px solid var(--sun-red);
+        }
+
+        .bot {
+            background: #f5f5f5;
+            color: #111;
+            border-bottom-left-radius: 6px;
+        }
+
+        /* INPUT */
+        .input-area {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 28px;
+            border: none;
+            background: var(--glass);
+            color: white;
+        }
+
+        button.send {
+            padding: 0 26px;
+            border-radius: 28px;
+            border: none;
+            background: var(--sun-red);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button.send:hover {
+            background: #d1152c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="header-left">
+            <img src="../static/yorichi.jpg">
+            <div>
+                <h1>YORIICHI</h1>
+                <p>SUN BREATHING • DEMON SLAYER</p>
+            </div>
+        </div>
+        <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
+    </div>
+
+    <div class="hero">
+        “The Sun does not seek praise. It simply rises.”
+    </div>
+
+    <div class="techniques">
+        <button onclick="sendTechnique('First Form: Dance')">First Form</button>
+        <button onclick="sendTechnique('Third Form: Raging Sun')">Raging Sun</button>
+        <button onclick="sendTechnique('Sixth Form: Solar Heat Haze')">Solar Heat</button>
+        <button onclick="sendTechnique('Eighth Form: Dragon Sun Halo Head Dance')">Dragon Sun</button>
+        <button onclick="sendTechnique('Thirteenth Form')">Thirteenth Form</button>
+    </div>
+
+    <div class="chat-messages" id="chat"></div>
+
+    <form class="input-area" id="form">
+        <input id="input" placeholder="Speak to the Sun Hashira..." autocomplete="off">
+        <button class="send">Send</button>
+    </form>
+
+    <script>
+        const chat = document.getElementById("chat");
+        const input = document.getElementById("input");
+
+        function addBot(text) {
+            chat.innerHTML += `
+            <div class="bot-wrapper">
+                <div class="bot-avatar"></div>
+                <div class="message bot">${text}</div>
+            </div>
+        `;
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        document.getElementById("form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            // user message
+            chat.innerHTML += `<div class="message user">${msg}</div>`;
+            chat.scrollTop = chat.scrollHeight;
+            input.value = "";
+
+            try {
+                const res = await fetch("http://127.0.0.1:5003/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ msg })
+                });
+
+                if (!res.ok) {
+                    const errText = await res.text();
+                    addBot(errText);
+                    return;
+                }
+
+                const reply = await res.text();
+                addBot(reply);
+
+            } catch (err) {
+                addBot("The sun is silent… the server failed.");
+                console.error(err);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
