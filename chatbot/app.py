@@ -28,7 +28,7 @@ from flask_cors import CORS
 from google import genai
 from google.genai.errors import ClientError
 
-client = genai.Client(api_key="AIzaSyDN981oex4PswEd2AN_hobpyQt-_tnlRfo")
+client = genai.Client(api_key="API-KEY")
 
 app = Flask(__name__)
 CORS(app)
@@ -63,4 +63,5 @@ def chat():
 
 
 if __name__ == "__main__":
+
     app.run(port=5003, debug=True)
