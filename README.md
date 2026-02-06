@@ -1,69 +1,63 @@
- Yoriichi AI: Breath of the Sun Chatbot
+1.🌞 Yoriichi Tsugikuni – Sun Breathing Chatbot
 
-An immersive AI-powered chatbot interface themed after the legendary first Demon Slayer, Yoriichi Tsugikuni. This project combines a Python Flask backend with the Google Gemini API to provide a wise, stoic, and character-driven conversational experience.
+A stylish AI-powered chatbot inspired by Yoriichi Tsugikuni (Demon Slayer), built using Flask, Google Gemini API, and a custom animated frontend UI.
+The chatbot responds in real time with graceful error handling, avatar-based chat messages, and a themed design.
 
-✨ Features
+2.✨ Features
 
-Character Accuracy: System-prompted AI that speaks with the humility and wisdom of Yoriichi.
+🔥 Gemini AI (gemini-2.5-flash) integration
+🧠 Real-time chatbot responses
+🎭 Character-themed UI (Sun Breathing aesthetic)
+🖼️ Background + avatar image support
+⚠️ Graceful API quota error handling
+🌐 Frontend–backend communication using Fetch API
+🔐 CORS-enabled backend for browser access
 
-Sun Breathing UI: A "Glassmorphism" design with deep crimson and gold accents.
+3.📁 Project Structure
 
-Form Buttons: Interactive buttons to quickly trigger Sun Breathing technique dialogues.
-
-Error Handling: Graceful handling of API quotas (Resource Exhausted) with thematic messages.
-
-Responsive Design: Large, expanded interface optimized for both desktop and mobile viewing.
-
-📁 Project Structure
-
-yoriichi-ai/
-├── app.py                 # Flask server & Gemini API logic
-├── templates/             # HTML files
-│   └── index.html         # Main chatbot interface
-├── static/                # CSS, JS, and Media
-│   ├── yorichi.jpg        # Background & Avatar image
-│   └── style.css          # (Optional) External CSS
-└── README.md              # Documentation
-
-
-🚀 Setup Instructions
-
-1. Prerequisites
-
-Python 3.9+
-
-A Google Gemini API Key
-
-2. Installation
-
-Clone the project or create the directory structure as shown above, then install the dependencies:
-
-pip install flask flask-cors google-genai
+chatbot/
+│
+├── app.py                  # Flask backend (Gemini API logic)
+│
+├── templates/
+│   └── index.html          # Frontend HTML (chat UI)
+│
+├── static/
+│   └── yorichi.jpg         # Background + avatar image
+│
+├── requirements.txt        # Python dependencies
+│
+└── README.md               # Project documentation
 
 
-3. API Configuration
 
-Open app.py and replace "API-KEY" with your actual Google AI Studio API key.
+4.requirements
 
-4. Running the App
+flask
+flask-cors
+google-genai
+pip install -r requirements.txt
 
-Navigate to the project folder and run:
 
+🚀 How to Run the Project
+1️⃣ Add your Gemini API Key
+
+In app.py:
+
+client = genai.Client(api_key="YOUR_API_KEY")
+
+⚠️ Do not expose your API key in public repositories.
+
+2️⃣ Start the Backend Server
 python app.py
 
+Server will run at:
 
-The application will start on http://127.0.0.1:5003.
+http://127.0.0.1:5003/
+3️⃣ Open the Web App
 
-🛠️ Technology Stack
+Open your browser and visit:
 
-Backend: Python Flask
+http://127.0.0.1:5003/
 
-Frontend: HTML5, Tailwind CSS, JavaScript (Vanilla)
-
-AI Model: Google Gemini 2.5 Flash
-
-Styling: Google Fonts (Cinzel, Noto Sans JP)
-
-📜 License
-
-This project is for fan/educational purposes. Characters and imagery belong to Koyoharu Gotouge / Shueisha / Aniplex / ufotable.
+Start chatting with Yoriichi Tsugikuni ☀️🗡️
